@@ -1,13 +1,13 @@
 pipeline {
   environment {
-    dockerimagename = "bravinwasike/react-app"
+    dockerimagename = "rohit19aug/pythonproject:v1.0.0"
     dockerImage = ""
   }
   agent any
   stages {
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/YOURUSERNAME/jenkins-kubernetes-deployment.git'
+        git 'https://github.com/rohituser/Python-Hello-World.git'
       }
     }
     stage('Build image') {
@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Pushing Image') {
       environment {
-          registryCredential = 'dockerhub-credentials'
+          registryCredential = 'DockerHub-Credential'
            }
       steps{
         script {
@@ -32,8 +32,7 @@ pipeline {
     stage('Deploying React.js container to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "deployment.yaml", 
-                                         "service.yaml")
+          kubernetesDeploy(configs: "kubectl apply -f k8s-and-docker.yaml")
         }
       }
     }
