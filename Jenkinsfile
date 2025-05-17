@@ -19,13 +19,12 @@ pipeline {
     }
     stage('Pushing Image') {
       environment {
-          registryCredential = 'DockerHub-Credential'
-        
-           }
+          def registryCredential = 'DockerHub-Credential'
+          }
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("latest")
+          dockerImage.push("latest")
           }
         }
       }
