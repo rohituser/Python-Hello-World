@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    def dockerimagename = "rohit19aug/pythonproject:v1.0.0"
-    def dockerImage = ""
+    dockerimagename = "rohit19aug/pythonproject:v1.0.0"
+    dockerImage = ""
   }
   agent any
   stages {
@@ -13,7 +13,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          def dockerImage = docker.build dockerimagename
+          dockerImage = docker.build dockerimagename
         }
       }
     }
