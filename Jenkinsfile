@@ -31,7 +31,7 @@ pipeline {
         withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
             sh '''
                 export KUBECONFIG=$KUBECONFIG_FILE
-                kubectl apply -f k8s-and-docker.yaml
+                kubectl apply --validate=false -f k8s-and-docker.yaml
             '''
             }
       }
