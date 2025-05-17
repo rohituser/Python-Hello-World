@@ -7,9 +7,9 @@ pipeline {
   stages {
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/rohituser/Python-Hello-World.git'
-      }
-    }
+         git branch: 'main', url: 'https://github.com/rohituser/Python-Hello-World.git'
+   }
+  }
     stage('Build image') {
       steps{
         script {
