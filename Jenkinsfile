@@ -13,13 +13,13 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage = docker.build dockerimagename
+          def dockerImage = docker.build dockerimagename
         }
       }
     }
     stage('Pushing Image') {
       environment {
-          registryCredential = 'DockerHub-Credential'
+          registryCredential = 'd5ab034c-3303-4879-8d08-a75fa74ec71c'
            }
       steps{
         script {
